@@ -1,0 +1,13 @@
+<div class="search-wrap">
+
+    <section class="lists" [ngClass]="{
+        'is-extended': extended,
+        'is-not-extended': !extended
+    }">
+        <app-lists (extendedEmitter)="onExtend($event)" [vigLists]="lists"></app-lists>
+    </section>
+    <section class="main">
+        <app-navigation></app-navigation>
+        <router-outlet></router-outlet>
+    </section>
+</div>

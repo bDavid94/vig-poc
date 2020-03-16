@@ -1,0 +1,17 @@
+.search-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    .lists {}
+    .main {
+        flex: 3;
+    }
+}
+
+.is-extended {
+    flex: 1;
+}
+
+.is-not-extended {
+    width: 5%;
+}

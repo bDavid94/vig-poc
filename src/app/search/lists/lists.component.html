@@ -1,0 +1,45 @@
+<div class="lists-wrap">
+    <section class="head">
+        <span>Search lists</span>
+        <span (click)="toogleHide()" class="hide">Hide</span>
+    </section>
+
+    <section class="lists" *ngIf="extended">
+        <div *ngFor="let category of vigLists.lists" class="category">
+            <hr>
+            <div class="elem">
+
+                <label class="container">
+                    {{category.name}}
+                    <input type="checkbox" name="ie" [checked]="shouldParrentBeChecked(category)" (click)="checkChilds(category)">
+                    <span class="checkmark"></span>
+                 </label>
+                <span *ngIf="category.expanded" (click)="onCollapse(category)" class="collapse-btn">^</span>
+                <span *ngIf="!category.expanded" (click)="onCollapse(category)" class="collapse-btn">v</span>
+            </div>
+
+            <div *ngFor="let subCategory of category.lists" class="subCategory" [hidden]="!category.expanded">
+                <div class="elem">
+                    <label class="container">
+                            {{subCategory.name}}
+                        <input type="checkbox" name="test" [checked]="shouldParrentBeChecked(subCategory)"
+                         (click)="checkChilds(subCategory)">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span *ngIf="subCategory.expanded" (click)="onCollapse(subCategory)" class="collapse-btn">^</span>
+                    <span *ngIf="!subCategory.expanded" (click)="onCollapse(subCategory)" class="collapse-btn">v</span>
+                </div>
+
+
+                <div class="list" *ngFor="let list of subCategory.lists" [hidden]="!subCategory.expanded">
+                    <label class="container">{{list.name}}
+                        <input type="checkbox" [disabled]="list.mandatory" [(ngModel)]="list.isChecked">
+                        <span class="checkmark"></span>
+                        <span *ngIf="list.private" class="private">*</span>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

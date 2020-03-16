@@ -1,0 +1,17 @@
+<div class="mass-wrap">
+    <div class="header">
+        You will make a mass search
+    </div>
+    <div class="download">
+        Download the excel template file
+    </div>
+    <div class="drag-zone" appDragAndDrop (fileDropped)="uploadFile($event)">
+        <div *ngIf="fileName === ''">
+            <p>Drag and drop</p>
+        </div>
+        <p *ngIf="fileName === ''">Add excel file by dropping it in this insert or</p>
+        <input type="file" *ngIf="fileName === ''" (change)="uploadFile($event.target.files[0])">
+        <p *ngIf="fileName!== ''">{{fileName}}</p>
+    </div>
+    <div class="process">Process the search</div>
+</div>
